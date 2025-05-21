@@ -2,7 +2,7 @@ name: CI / CD Operations
 on:
   push:
     branches:
-      - improvement/AS-1210320934408647-improve-test-coverage
+      - master
 defaults:
   run:
     working-directory: ./
@@ -20,8 +20,8 @@ jobs:
       - name: ⚙️ Generating coverage badges
         uses: jpb06/coverage-badges-action@latest
         with:
-          branches: master,preprod,staging
-          badges-icon: improvement/AS-1210320934408647-improve-test-coverage
+          branches: master
+          badges-icon: jest
           coverage-summary-path: |
             ./coverage/common-layer/coverage-summary.json
             ./coverage/users/coverage-summary.json
@@ -31,28 +31,3 @@ jobs:
             ./coverage/invoice-correction/coverage-summary.json
             ./coverage/invoice-replacement/coverage-summary.json
             ./coverage/invoice-cancellation/coverage-summary.json
-  #documentation:
-  #  name: Sync Documentation to ReadMe
-  #  runs-on: ubuntu-latest
-  #  defaults:
-  #    run:
-  #      working-directory: docs
-  #  steps:
-  #    - name: ⬇️ Checkout repository
-  #      uses: actions/checkout@v4
-  #    - name: 📦 Install dependencies
-  #      run: npm install
-  #    - name: 🔨 Build documentation
-  #      run: npm run build
-  #    - name: 📤 Upload Endpoint Documentation
-  #      uses: readmeio/rdme@v8
-  #      with:
-  #        rdme: openapi swagger.yml --workingDirectory=docs --key=${{ secrets.README_API_KEY }} --version ${{ vars.README_PROJECT_VERSION }} --id=${{ vars.README_PROJECT_ID }}
-  #    - name: 📤 Upload Data Dictionaries
-  #      uses: readmeio/rdme@v8
-  #      with:
-  #        rdme: docs ./docs/data-dictionaries --key ${{ secrets.README_API_KEY }} --version ${{ vars.README_PROJECT_VERSION }} --id ${{ vars.README_PROJECT_ID }}
-  #    - name: 📤 Upload Error Dictionaries
-  #      uses: readmeio/rdme@v8
-  #      with:
-  #        rdme: docs ./docs/error-dictionaries --key ${{ secrets.README_API_KEY }} --version ${{ vars.README_PROJECT_VERSION }} --id ${{ vars.README_PROJECT_ID }}
