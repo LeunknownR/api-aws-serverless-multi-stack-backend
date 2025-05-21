@@ -26,7 +26,7 @@ export default class RegisterUserUseCase {
       fullAddress: dto.fullAddress,
       phone: dto.phone,
     };
-    await this.existsUserByIdService.check(user.id);
+    await this.existsUserByIdService.checkDuplicated(user.id);
     const success = await this.userRepository.registerUser(user);
     if (!success)
       throw new UserDomainError(DomainErrorCode.Fatal, [

@@ -5,7 +5,7 @@ const APP_USER_ERROR_TABLE = new AppErrorTable({
   title: 'Errores sobre Usuarios / Users',
   description: 'Listado de errores relacionados con los usuarios.',
   errors: {
-    USER_ID_ALREADY_EXISTS: {
+    USER_DUPLICATED: {
       orderCode: 1,
       message: `The user with id {id} already exists`,
       description: 'El id de la usuario ya fue registrado previamente.',

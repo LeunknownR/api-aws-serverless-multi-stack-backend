@@ -17,12 +17,12 @@ export default class UserQueryService {
       ]);
     return user;
   }
-  async check(id: string): Promise<void> {
+  async checkDuplicated(id: string): Promise<void> {
     const user = await this.repository.getUserById(id);
     if (user)
       throw new UserDomainError(DomainErrorCode.Conflict, [
         {
-          error: APP_USER_ERRORS.USER_ID_ALREADY_EXISTS,
+          error: APP_USER_ERRORS.USER_DUPLICATED,
           params: { id },
         },
       ]);
