@@ -1,0 +1,23 @@
+name: Sync Documentation to ReadMe
+on:
+  push:
+    branches:
+      - sandbox
+defaults:
+  run:
+    working-directory: docs
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install && npm run build
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: openapi swagger.yml --workingDirectory=docs --key=${{ secrets.README_API_KEY }} --version ${{ vars.README_PROJECT_VERSION }} --id=${{ vars.README_PROJECT_ID }}
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs ./docs/data-dictionaries --key ${{ secrets.README_API_KEY }} --version ${{ vars.README_PROJECT_VERSION }} --id ${{ vars.README_PROJECT_ID }}
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs ./docs/error-dictionaries --key ${{ secrets.README_API_KEY }} --version ${{ vars.README_PROJECT_VERSION }} --id ${{ vars.README_PROJECT_ID }}

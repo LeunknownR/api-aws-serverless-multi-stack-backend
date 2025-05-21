@@ -1,0 +1,12 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "Users stack",
+  "main": "index.js",
+  "scripts": {
+    "build:layer": "tsc",
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage --coverageThreshold=[html]"
+  },
+  "license": "ISC"
+}

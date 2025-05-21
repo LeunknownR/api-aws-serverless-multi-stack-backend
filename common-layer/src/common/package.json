@@ -1,0 +1,22 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "Common layer stack",
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "8.17.1",
+    "ajv-errors": "3.0.0",
+    "ajv-formats": "3.0.1",
+    "json-schema-to-ts": "3.1.1",
+    "lambda-multipart-parser": "1.0.1",
+    "ulid": "2.3.0",
+    "xmlbuilder2": "3.1.1"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-lambda": "3.516.0",
+    "@types/uuid": "9.0.8"
+  }
+}

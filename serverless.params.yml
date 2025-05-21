@@ -1,0 +1,38 @@
+dev:
+  accountId: 955452929690
+  domainPrefix: dev.
+  logRetentionInDays: 1
+  defaultLambdaTimeoutInSeconds: 120
+  veriFactu:
+    url: 'https://prewww1.aeat.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP'
+test:
+  accountId: 955452929690
+  domainPrefix: almost.
+  vpcId: vpc-0b0dbf48b85c33f90
+  hostedZoneId: 'Z081664511HPMV0M4BJRW'
+  logRetentionInDays: 1
+  defaultLambdaTimeoutInSeconds: 30
+  veriFactu:
+    url: 'https://prewww1.aeat.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP'
+    clientTimeout: 10000
+sand:
+  accountId: 736140816709
+  domainPrefix: sandbox.
+  hostedZoneId: Z081664511HPMV0M4BJRW
+  logRetentionInDays: 30
+  defaultLambdaTimeoutInSeconds: 30
+  veriFactu:
+    url: 'https://prewww1.aeat.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP'
+    clientTimeout: 8000
+prod:
+  accountId: 955452929690
+  domainPrefix: api.
+  hostedZoneId: Z081664511HPMV0M4BJRW
+  logRetentionInDays: 30
+  defaultLambdaTimeoutInSeconds: 30
+  veriFactu:
+    url: 'https://www1.agenciatributaria.gob.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP'
+    clientTimeout: 8000
+  slack:
+    webhookUrl: https://hooks.slack.com/services/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
+    channel: al-fe-esp-vf-e-providers

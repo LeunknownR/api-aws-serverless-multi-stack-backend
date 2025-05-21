@@ -1,0 +1,37 @@
+service: ${self:custom.common.app.name}-${self:custom.key}-layer
+
+frameworkVersion: ${self:custom.common.frameworkVersion}
+
+custom: 
+  common: ${file(../serverless.common.yml)}
+  key: common
+
+params: ${file(../serverless.params.yml)}
+
+provider:
+  name: aws
+  region: ${self:custom.common.region}
+  profile: ${self:custom.common.profile}
+  stage: ${self:custom.common.stage}
+
+package:
+  individually: true
+  patterns:
+    - "!**/tests/**"
+    - "!**/*.d.ts"
+    - "!./package.json"
+    - "!./package-lock.json"
+    - '!**/tsconfig.json'
+    - '!**/jest.config.js'
+
+layers:
+  common:
+    path: dist/common
+    name: ${self:custom.common.app.name}-${self:custom.key}-layer-${self:custom.common.stage}
+    description: Common code for ${self:custom.common.app.name}.
+    retain: false
+    package:
+      patterns:
+        - "!./tests/**"
+        - "!./package.json"
+        - "!./package-lock.json"

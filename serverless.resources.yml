@@ -1,0 +1,7 @@
+commonLayerArn: arn:aws:lambda:${self:custom.common.region}:${param:accountId}:layer:${self:custom.common.app.name}-common-layer-${self:custom.common.stage}:latest
+httpApi:
+  id:
+    Fn::ImportValue: ${self:custom.common.app.name}-api-id-${self:custom.common.stage}
+iam:
+  role:
+    Fn::ImportValue: ${self:custom.common.app.name}-${self:custom.key}-lambda-role-arn-${self:custom.common.stage}

@@ -1,0 +1,53 @@
+frameworkVersion: '3'
+app:
+  name: api-aws-serverless-multi-stack-backend
+  functionPrefix: api-aws-serverless-multi-stack
+  version: 1
+stage: ${opt:stage, 'dev'}
+profile: ${self:custom.common.app.name}-${self:custom.common.stage}
+runtime: nodejs20.x
+defaultMemory: 256
+defaultLambdaTimeoutInSeconds: 29
+useDotenv: true
+region: us-east-1
+lambdaHashingVersion: 20201221
+versionFunctions: false
+packagePatterns:
+  - '!**/tsconfig.json'
+  - '!**/jest.config.js'
+  - '!**/package.json'
+  - '!**/package-lock.json'
+  - '!**/tests/**'
+  - '!**/*.d.ts'
+  - '!**/node_modules'
+esBuildWatcher:
+  dev:
+    - './src/**/*.ts'
+    - './layer/**/*.ts'
+    - './../common-layer/**/*.ts'
+  toAws: []
+esBuildExclusion:
+  dev: []
+  toAws:
+    - '/opt/*'
+watchFiles:
+  dev: '**/*.ts'
+esbuild:
+  bundle: true
+  minify: false
+  sourcemap: false
+  keepNames: true
+  concurrency: 14
+  watch:
+    pattern: ${self:custom.common.esBuildWatcher.${self:custom.common.stage}, self:custom.common.esBuildWatcher.toAws}
+  exclude: ${self:custom.common.esBuildExclusion.${self:custom.common.stage}, self:custom.common.esBuildExclusion.toAws}
+s3:
+  host: localhost
+  directory: ./../s3-dev
+  silent: true
+  port: 4569
+offline:
+  noAuth: true
+sns:
+  port: 7002
+  debug: false

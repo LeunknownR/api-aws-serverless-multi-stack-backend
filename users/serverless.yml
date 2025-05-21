@@ -1,0 +1,76 @@
+service: ${self:custom.common.app.name}-${self:custom.key}-service
+
+frameworkVersion: ${self:custom.common.frameworkVersion}
+useDotenv: true
+
+custom:
+  key: users
+  common: ${file(../serverless.common.yml)}
+  esbuild: ${self:custom.common.esbuild}
+  resources: ${file(../serverless.resources.yml)}
+  params: ${self:params.${self:custom.common.stage}}
+  serverless-offline: ${self:custom.common.offline}
+
+params: ${file(../serverless.params.yml)}
+
+provider:
+  name: aws
+  region: ${self:custom.common.region}
+  profile: ${self:custom.common.profile}
+  stage: ${self:custom.common.stage}
+  logRetentionInDays: ${param:logRetentionInDays}
+  runtime: ${self:custom.common.runtime}
+  lambdaHashingVersion: ${self:custom.common.lambdaHashingVersion}
+  versionFunctions: ${self:custom.common.versionFunctions}
+  httpApi: ${self:custom.resources.httpApi}
+  iam: ${self:custom.resources.iam}
+  memorySize: ${self:custom.common.defaultMemory}
+  timeout: ${self:custom.common.defaultLambdaTimeoutInSeconds}
+  layers:
+    - ${self:custom.resources.commonLayerArn}
+    - { Ref: UsersLambdaLayer }
+  environment: ${file(../serverless.environment.yml)}
+
+package:
+  individually: true
+  patterns: ${self:custom.common.packagePatterns}
+
+layers:
+  users:
+    path: dist/users/layer
+    name: ${self:custom.common.app.name}-${self:custom.key}-layer-${self:custom.common.stage}
+    retain: false
+    package:
+      patterns:
+        - '!./tests/**'
+        - '!./package.json'
+        - '!./package-lock.json'
+
+functions:
+  getUserById:
+    name: ${self:custom.common.app.functionPrefix}-get-user-by-id-${self:custom.common.stage}
+    handler: src/get-user-by-id.handler
+    package:
+      patterns:
+        - './src/get-user-by-id.ts'
+        - ${self:custom.common.watchFiles.${self:custom.common.stage}, "!**/*.ts"}
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: get
+  registerUser:
+    name: ${self:custom.common.app.functionPrefix}-register-user-${self:custom.common.stage}
+    handler: src/register-user.handler
+    package:
+      patterns:
+        - './src/register-user.ts'
+        - ${self:custom.common.watchFiles.${self:custom.common.stage}, "!**/*.ts"}
+    events:
+      - httpApi:
+          path: /users
+          method: post
+
+plugins:
+  - serverless-latest-layer-version
+  - serverless-esbuild
+  - serverless-offline

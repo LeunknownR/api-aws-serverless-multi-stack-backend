@@ -1,0 +1,23 @@
+dist/
+coverage/
+.env.*
+!.env.config
+stack-port-mapping.txt
+dynamodb-dev/data/
+cert.crt
+private-key.key
+tmp
+test-company-certificates
+
+# S3
+s3-dev
+
+# package directories
+node_modules/
+jspm_packages
+
+# Serverless directories
+.serverless
+.idea
+.vscode
+.esbuild/
