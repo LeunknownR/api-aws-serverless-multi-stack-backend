@@ -10,6 +10,8 @@ jobs:
   coverage-badges:
     name: Generate Coverage Badges
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
     steps:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
@@ -17,10 +19,6 @@ jobs:
         run: npm run setup:github-actions
       - name: 🧪 Tests
         run: npm run test:ci
-      - name: Authenticate with PAT
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: git remote set-url origin https://github.com/${{ github.repository }} && git config credential.helper '!echo "username=x-access-token" && echo "password=${GH_PAT}"'
       - name: ⚙️ Generating coverage badges
         uses: jpb06/coverage-badges-action@latest
         with:
