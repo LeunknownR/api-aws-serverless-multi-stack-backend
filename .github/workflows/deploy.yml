@@ -11,7 +11,7 @@ jobs:
     name: Generate Coverage Badges
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pages: write
     steps:
       - name: ⬇️ Checkout repository
