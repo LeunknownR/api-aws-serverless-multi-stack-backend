@@ -11,7 +11,8 @@
     "test:ci": "bash ./test.sh -ci",
     "offline": "bash ./offline.sh",
     "lint:fix": "eslint --fix .",
-    "preview:build": "bash ./build.sh"
+    "preview:build": "bash ./build.sh",
+    "prepare": "husky"
   },
   "author": "Manuel Rivera",
   "license": "ISC",
