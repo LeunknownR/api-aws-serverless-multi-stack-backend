@@ -24,12 +24,6 @@ jobs:
         with:
           branches: master
           badges-icon: jest
-          coverage-summary-path: |
+          coverage-summary-path:
             ./coverage/common-layer/coverage-summary.json
             ./coverage/users/coverage-summary.json
-            ./coverage/companies/coverage-summary.json
-            ./coverage/invoices/coverage-summary.json
-            ./coverage/invoice-creation/coverage-summary.json
-            ./coverage/invoice-correction/coverage-summary.json
-            ./coverage/invoice-replacement/coverage-summary.json
-            ./coverage/invoice-cancellation/coverage-summary.json
