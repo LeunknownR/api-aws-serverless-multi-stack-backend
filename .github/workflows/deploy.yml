@@ -24,6 +24,5 @@ jobs:
         with:
           branches: master
           badges-icon: jest
-          coverage-summary-path:
-            ./coverage/common-layer/coverage-summary.json
-            ./coverage/users/coverage-summary.json
+          coverage-summary-path: |
+            ./coverage/**/coverage-summary.json
