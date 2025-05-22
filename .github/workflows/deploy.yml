@@ -23,6 +23,7 @@ jobs:
         uses: jpb06/coverage-badges-action@latest
         with:
           branches: master
+          target-branch: master
           badges-icon: jest
           coverage-summary-path: |
             ./coverage/**/coverage-summary.json
