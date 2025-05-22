@@ -1,6 +1,6 @@
 # API AWS Serverless Multi Stack Backend
 
-Este proyecto implementa una API backend serverless utilizando servicios de AWS y una arquitectura multi-stack.
+Este proyecto implementa una API backend con arquitectura AWS serverless y multi-stack.
 
 ## 📊 Test Coverage Report
 
@@ -10,11 +10,7 @@ Este proyecto implementa una API backend serverless utilizando servicios de AWS 
 
 ### 🔀 Stack metrics
 
-<div align="center">
-
-| <div style="width:200px">Stack</div> | Coverage |
+| <div style="width:150px">Stack</div> | Metrics |
 |-------|----------|
-| <div style="width:200px">`common-layer`</div> | ![Branches](./badges/common-layer/coverage-branches.svg) ![Functions](./badges/common-layer/coverage-functions.svg) ![Lines](./badges/common-layer/coverage-lines.svg) ![Statements](./badges/common-layer/coverage-statements.svg) ![Total](./badges/common-layer/coverage-total.svg) |
-| <div style="width:200px">`users`</div> | ![Branches](./badges/users/coverage-branches.svg) ![Functions](./badges/users/coverage-functions.svg) ![Lines](./badges/users/coverage-lines.svg) ![Statements](./badges/users/coverage-statements.svg) ![Total](./badges/users/coverage-total.svg) |
-
-</div>
+| `common-layer` | ![Branches](./badges/common-layer/coverage-branches.svg) ![Functions](./badges/common-layer/coverage-functions.svg) ![Lines](./badges/common-layer/coverage-lines.svg) ![Statements](./badges/common-layer/coverage-statements.svg) ![Total](./badges/common-layer/coverage-total.svg) |
+| `users` | ![Branches](./badges/users/coverage-branches.svg) ![Functions](./badges/users/coverage-functions.svg) ![Lines](./badges/users/coverage-lines.svg) ![Statements](./badges/users/coverage-statements.svg) ![Total](./badges/users/coverage-total.svg) |
