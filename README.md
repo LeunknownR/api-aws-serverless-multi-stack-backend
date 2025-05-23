@@ -4,12 +4,6 @@ Este proyecto implementa una API backend con arquitectura AWS serverless y multi
 
 ## 📊 Test Coverage Report
 
-### 🌐 Global Metrics
-
-![Branches](./badges/coverage-branches.svg) ![Functions](./badges/coverage-functions.svg) ![Lines](./badges/coverage-lines.svg) ![Statements](./badges/coverage-statements.svg) ![Total](./badges/coverage-total.svg)
-
-### 🔀 Stack metrics
- 
 | Stack⠀⠀⠀⠀⠀⠀⠀⠀⠀| Metrics |
 |----------------|----------|
 | `common-layer` | ![Branches](./badges/common-layer/coverage-branches.svg) ![Functions](./badges/common-layer/coverage-functions.svg) ![Lines](./badges/common-layer/coverage-lines.svg) ![Statements](./badges/common-layer/coverage-statements.svg) ![Total](./badges/common-layer/coverage-total.svg) |
