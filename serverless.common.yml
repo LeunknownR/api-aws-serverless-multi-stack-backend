@@ -12,7 +12,7 @@ useDotenv: true
 region: us-east-1
 lambdaHashingVersion: 20201221
 versionFunctions: false
-packagePatterns:
+stackPackagePatterns:
   - '!**/tsconfig.json'
   - '!**/jest.config.js'
   - '!**/package.json'
@@ -20,6 +20,10 @@ packagePatterns:
   - '!**/tests/**'
   - '!**/*.d.ts'
   - '!**/node_modules'
+layerPackagePatterns:
+  - '!./tests/**'
+  - '!./package.json'
+  - '!./package-lock.json'
 esBuildWatcher:
   dev:
     - './src/**/*.ts'
@@ -41,13 +45,5 @@ esbuild:
   watch:
     pattern: ${self:custom.common.esBuildWatcher.${self:custom.common.stage}, self:custom.common.esBuildWatcher.toAws}
   exclude: ${self:custom.common.esBuildExclusion.${self:custom.common.stage}, self:custom.common.esBuildExclusion.toAws}
-s3:
-  host: localhost
-  directory: ./../s3-dev
-  silent: true
-  port: 4569
 offline:
   noAuth: true
-sns:
-  port: 7002
-  debug: false

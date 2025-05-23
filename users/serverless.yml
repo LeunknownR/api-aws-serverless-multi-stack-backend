@@ -33,7 +33,7 @@ provider:
 
 package:
   individually: true
-  patterns: ${self:custom.common.packagePatterns}
+  patterns: ${self:custom.common.stackPackagePatterns}
 
 layers:
   users:
@@ -41,10 +41,7 @@ layers:
     name: ${self:custom.common.app.name}-${self:custom.key}-layer-${self:custom.common.stage}
     retain: false
     package:
-      patterns:
-        - '!./tests/**'
-        - '!./package.json'
-        - '!./package-lock.json'
+      patterns: ${self:custom.common.layerPackagePatterns}
 
 functions:
   getUserById:

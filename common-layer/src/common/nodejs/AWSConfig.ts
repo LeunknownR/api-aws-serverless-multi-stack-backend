@@ -6,12 +6,9 @@ type AWSConfig = {
   };
   region: string;
   dynamoDbLocalEndpoint?: string;
-  s3LocalEndpoint?: string;
-  snsLocalEndpoint?: string;
 };
 export class AWSConfigLoader {
   private static Offline(): AWSConfig {
-    const { AWS_S3_LOCAL_PORT, AWS_SNS_LOCAL_PORT } = process.env;
     return {
       region: 'localhost',
       credentials: {
@@ -19,8 +16,6 @@ export class AWSConfigLoader {
         secretAccessKey: 'S3RVER',
       },
       dynamoDbLocalEndpoint: 'http://localhost:8000',
-      s3LocalEndpoint: `http://localhost:${AWS_S3_LOCAL_PORT}`,
-      snsLocalEndpoint: `http://localhost:${AWS_SNS_LOCAL_PORT}`,
     };
   }
   private static Online(): AWSConfig {

@@ -11,7 +11,6 @@ export default function generateJestConfig(compilerOptions: Record<string, any>)
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths!, {
       prefix: '<rootDir>/',
     }),
-    setupFilesAfterEnv: ['<rootDir>/tests/config/test.setup.ts'],
     testMatch: ['**/*.test.ts'],
     modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/.esbuild/', '<rootDir>/coverage/'],
     coveragePathIgnorePatterns: ['node_modules', '<rootDir>/.esbuild/', '<rootDir>/coverage/', '<rootDir>/tests/'],

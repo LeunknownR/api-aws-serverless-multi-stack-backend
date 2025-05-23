@@ -16,13 +16,7 @@ provider:
 
 package:
   individually: true
-  patterns:
-    - "!**/tests/**"
-    - "!**/*.d.ts"
-    - "!./package.json"
-    - "!./package-lock.json"
-    - '!**/tsconfig.json'
-    - '!**/jest.config.js'
+  patterns: ${self:custom.common.stackPackagePatterns}
 
 layers:
   common:
@@ -31,7 +25,4 @@ layers:
     description: Common code for ${self:custom.common.app.name}.
     retain: false
     package:
-      patterns:
-        - "!./tests/**"
-        - "!./package.json"
-        - "!./package-lock.json"
+      patterns: ${self:custom.common.layerPackagePatterns}

@@ -1,11 +1,2 @@
 APP_NAME: ${self:custom.common.app.name}
 ENV: ${self:custom.common.stage}
-AWS_S3_LOCAL_PORT: ${self:custom.common.s3.port}
-AWS_SNS_LOCAL_PORT: ${self:custom.common.sns.port}
-SLACK_WEBHOOK_URL: ${self:custom.params.slack.webhookUrl, ''}
-SLACK_CHANNEL: ${self:custom.params.slack.channel, ''}
-VERIFACTU_URL: ${self:custom.params.veriFactu.url, ''}
-VERIFACTU_CLIENT_TIMEOUT: ${self:custom.params.veriFactu.clientTimeout, ''}
-INVOICE_STATUS_CHECK_TOPIC_ARN: ${self:custom.resources.topic.invoiceStatusCheck.arn, ''}
-INVOICE_SEND_EVENT_REQUESTS_TOPIC_ARN: ${self:custom.resources.topic.invoiceSendEventRequests.arn, ''}
-REGISTRATION_REQUESTS_QUEUE_URL: ${self:custom.resources.queue.invoiceRegistrationRequests.url, ''}
