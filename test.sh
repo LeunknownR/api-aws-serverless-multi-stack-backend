@@ -3,6 +3,7 @@
 trap 'kill $(jobs -p) 2>/dev/null; exit' SIGINT
 
 base_dir=$(pwd)
+exit_code=0
 
 additional_flags=""
 if [[ "$1" == "-c" ]]; then
@@ -17,4 +18,15 @@ for service in "${services[@]}"; do
   echo "Running tests for $service..."
   cd "$base_dir/$service"
   eval "npx jest --passWithNoTests $additional_flags"
+  
+  # Capture the exit code of Jest
+  service_exit_code=$?
+  
+  # If any service fails, mark the overall process as failed
+  if [ $service_exit_code -ne 0 ]; then
+    exit_code=$service_exit_code
+  fi
 done
+
+# Exit with the appropriate code
+exit $exit_code
